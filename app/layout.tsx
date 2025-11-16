@@ -3,6 +3,7 @@ import { VT323, Fira_Code } from "next/font/google";
 import "./globals.css";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
+import DigitalRain from "./components/Digitalain";
 
 const firaCode = Fira_Code({
   subsets: ["latin"],
@@ -32,6 +33,7 @@ export default function RootLayout({
       <body
         className={`${firaCode.variable} ${vt323.variable} font-mono bg-deep-black text-ghost-white min-h-screen flex flex-col`}
       >
+        <DigitalRain />
         <Header />
         <main className="grow">
           {children}
