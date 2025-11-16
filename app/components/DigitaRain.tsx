@@ -2,11 +2,9 @@
 
 import { useEffect, useRef } from 'react';
 
-// 1. DEFINIMOS NOSSAS CORES AQUI EM CIMA
-// (Baseado no seu globals.css / Tailwind v4)
-const MATRIX_GREEN = '#008F11'; // Nosso 'matrix-dark'
-const DEEP_BLACK_FADE = 'rgba(3, 10, 4, 0.05)'; // Nosso 'deep-black' com opacidade
-const CHARACTERS = 'KAUAN 0101 ABCDE FGHIJK LMNOPQ RSTU VWXYZ 01'; // Mais variedade
+const MATRIX_GREEN = '#008F11'; 
+const DEEP_BLACK_FADE = 'rgba(3, 10, 4, 0.05)';
+const CHARACTERS = 'KAUAN 0101 ABCDE FGHIJK LMNOPQ RSTU VWXYZ 01';
 
 export default function DigitalRain() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -32,11 +30,9 @@ export default function DigitalRain() {
     function draw() {
       if (!canvas || !ctx) return;
 
-      // 2. USAMOS NOSSA COR DE FADE
       ctx.fillStyle = DEEP_BLACK_FADE;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      // 3. USAMOS NOSSA COR DE TEXTO
       ctx.fillStyle = MATRIX_GREEN;
       drops.forEach((y, i) => {
         const text =
@@ -51,9 +47,8 @@ export default function DigitalRain() {
       });
     }
 
-    const interval = setInterval(draw, 50); // Deixei um pouco mais lento (33 -> 50)
+    const interval = setInterval(draw, 50);
 
-    // Ajusta o canvas se a tela mudar de tamanho
     const handleResize = () => {
       if (!canvasRef.current || !ctx) return;
       canvasRef.current.width = window.innerWidth;
@@ -61,18 +56,16 @@ export default function DigitalRain() {
     };
     window.addEventListener('resize', handleResize);
 
-    // Limpeza
     return () => {
       clearInterval(interval);
       window.removeEventListener('resize', handleResize);
     };
   }, []);
 
-  // 4. ESTA É A GRANDE MUDANÇA DE ESTILO PARA A OPÇÃO A
   return (
     <canvas
       ref={canvasRef}
-      className="fixed top-0 left-0 w-full h-full -z-10 opacity-25"
+      className="absolute inset-0 w-full h-full opacity-25"
     />
   );
 }
