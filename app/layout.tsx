@@ -3,7 +3,7 @@ import { VT323, Fira_Code } from "next/font/google";
 import "./globals.css";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
-import DigitalRain from "./components/DigitaRain";
+import DigitalRain from "./components/DigitalRain";
 import { Scanlines } from "./components/Scanlines";
 
 const firaCode = Fira_Code({
