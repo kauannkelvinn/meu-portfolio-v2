@@ -5,6 +5,7 @@ import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import DigitalRain from "./components/DigitalRain";
 import { Scanlines } from "./components/Scanlines";
+import { LayoutClient } from "./components/LayoutClient";
 
 const firaCode = Fira_Code({
   subsets: ["latin"],
@@ -34,13 +35,17 @@ export default function RootLayout({
       <body
         className={`${firaCode.variable} ${vt323.variable} font-mono bg-deep-black text-ghost-white min-h-screen flex flex-col`}
       >
-        <DigitalRain />
-        <Scanlines />
-        <Header />
-        <main className="grow">
-          {children}
-        </main>
-        <Footer />
+        <div className="fixed inset-0 -z-10 pointer-events-none">
+          <DigitalRain />
+          <Scanlines />
+        </div>
+        <LayoutClient>
+          <Header />
+          <main className="grow">
+            {children}
+          </main>
+          <Footer />
+        </LayoutClient>
       </body>
     </html>
   );
