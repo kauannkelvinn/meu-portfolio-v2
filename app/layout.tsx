@@ -1,27 +1,21 @@
 import type { Metadata } from "next";
-import { VT323, Fira_Code } from "next/font/google";
-import "./globals.css";
 import { Header } from "./components/Header";
-import { Footer } from "./components/Footer";
-import DigitalRain from "./components/DigitalRain";
-import { Scanlines } from "./components/Scanlines";
-import { LayoutClient } from "./components/LayoutClient";
+import "./globals.css";
+import { Space_Grotesk, Space_Mono } from 'next/font/google';
 
-const firaCode = Fira_Code({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-fira-code",
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  variable: '--font-display',
 })
 
-const vt323 = VT323({
-  subsets: ["latin"],
-  display: "swap",
-  weight: "400",
-  variable: "--font-vt323",
+const spaceMono = Space_Mono({
+  weight: ['400', '700'],
+  subsets: ['latin'],
+  variable: '--font-mono',
 })
 
 export const metadata: Metadata = {
-  title: "Portfólio Matrix",
+  title: "Portfólio Neo Brutalist",
   description: "Portólio de Kauan Kelvin",
 };
 
@@ -33,19 +27,10 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body
-        className={`${firaCode.variable} ${vt323.variable} font-mono bg-deep-black text-ghost-white min-h-screen flex flex-col`}
+        className={`${spaceGrotesk.variable} ${spaceMono.variable} font-mono bg-pure-black text-pure-white antialiased`}
       >
-        <div className="fixed inset-0 -z-10 pointer-events-none">
-          <DigitalRain />
-          <Scanlines />
-        </div>
-        <LayoutClient>
-          <Header />
-          <main className="grow">
-            {children}
-          </main>
-          <Footer />
-        </LayoutClient>
+        <Header />
+        {children}
       </body>
     </html>
   );
