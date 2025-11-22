@@ -1,36 +1,42 @@
 import type { Metadata } from "next";
-import { Header } from "./components/Header";
-import "./globals.css";
 import { Space_Grotesk, Space_Mono } from 'next/font/google';
+import "./globals.css";
+import { Header } from "./components/layout/Header";
+import Footer from "./components/layout/Footer";
+import ClientEffects from "./components/effects/ClientEffects";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
   variable: '--font-display',
+  display: "swap",
 })
 
 const spaceMono = Space_Mono({
   weight: ['400', '700'],
   subsets: ['latin'],
   variable: '--font-mono',
+  display: "swap",
 })
 
 export const metadata: Metadata = {
-  title: "Portfólio Neo Brutalist",
-  description: "Portólio de Kauan Kelvin",
+  title: "Kauan Kelvin - Full Stack Developer",
+  description: "Portfolio de desenvolvedor full stack especializado em React, Next.js e soluções modernas.",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="pt-BR">
-      <body
-        className={`${spaceGrotesk.variable} ${spaceMono.variable} font-mono bg-pure-black text-pure-white antialiased`}
-      >
+    <html lang="pt-BR" className={`${spaceGrotesk.variable} ${spaceMono.variable}`}>
+      <body className="font-mono bg-pure-black text-pure-white antialiased">
+        <ClientEffects />
         <Header />
-        {children}
+        <main className="min-h-screen pt-16">
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   );
