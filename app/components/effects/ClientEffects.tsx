@@ -1,7 +1,14 @@
 "use client";
 
 import Scanlines from "./Scanlines";
+import DigitalRain from "./DigitalRain";
 
 export default function ClientEffects() {
-  return <Scanlines />;
+    return (
+        <>
+            <DigitalRain />
+            <Scanlines />;
+        </>
+
+    )
 }

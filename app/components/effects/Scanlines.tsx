@@ -1,4 +1,3 @@
-// src/components/effects/Scanlines.tsx
 "use client";
 
 export default function Scanlines() {
