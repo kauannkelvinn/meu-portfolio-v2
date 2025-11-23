@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import ClientEffects from "./components/effects/ClientEffects";
+import Preloader from "./components/effects/Preloader";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -31,6 +32,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className={`${spaceGrotesk.variable} ${spaceMono.variable}`}>
       <body className="font-mono bg-pure-black text-pure-white antialiased">
+        <Preloader />
         <ClientEffects />
         <Header />
         <main className="min-h-screen pt-16">
