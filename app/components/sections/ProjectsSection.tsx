@@ -16,7 +16,6 @@ interface Project {
   featured?: boolean;
 }
 
-// Seus projetos (CUSTOMIZE AQUI!)
 const PROJECTS: Project[] = [
   {
     id: 1,
@@ -74,7 +73,7 @@ const PROJECTS: Project[] = [
 
 export default function ProjectsSection() {
   return (
-    <section id="projects" className="py-32 px-6 border-t-4 border-pure-white">
+    <section id="work" className="py-32 px-6 border-t-4 border-pure-white">
       <div className="max-w-7xl mx-auto">
         
         <motion.div
@@ -109,22 +108,18 @@ export default function ProjectsSection() {
                 ${project.featured ? 'lg:col-span-2 lg:row-span-2' : ''}
               `}
             >
-              {/* Badge de categoria */}
               <div className="absolute top-4 right-4 z-10">
                 <span className="px-3 py-1 text-xs uppercase tracking-wider font-bold bg-neon text-pure-black font-mono">
                   {project.category}
                 </span>
               </div>
 
-              {/* Conteúdo */}
               <div className="relative z-10 h-full flex flex-col">
                 
-                {/* Título */}
                 <h3 className="text-2xl md:text-3xl font-bold font-display mb-3 group-hover:text-pure-black transition-colors">
                   {project.title}
                 </h3>
 
-                {/* Descrição */}
                 <p className="text-sm md:text-base text-gray-400 group-hover:text-gray-700 mb-6 grow font-mono leading-relaxed">
                   {project.description}
                 </p>

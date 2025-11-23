@@ -116,7 +116,7 @@ export default function HeroSection() {
               </a>
               
               <a
-                href="https://linkedin.com/in/kauankelvin"
+                href="https://linkedin.com/in/kauannkelvinn"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-12 h-12 border-2 border-pure-white flex items-center justify-center hover:bg-neon hover:border-neon transition-all duration-200 group"
