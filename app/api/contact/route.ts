@@ -1,13 +1,26 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-console.log("🔑 API Key existe?", !!process.env.RESEND_API_KEY);
-console.log("🔑 API Key (primeiros 10 chars):", process.env.RESEND_API_KEY?.substring(0, 10));
-
-const resend = new Resend(process.env.RESEND_API_KEY);
+export const dynamic = "force-dynamic";
 
 export async function POST(request: Request) {
   try {
+    console.log("🔑 API Key existe?", !!process.env.RESEND_API_KEY);
+    console.log(
+      "🔑 API Key (primeiros 10 chars):",
+      process.env.RESEND_API_KEY?.substring(0, 10)
+    );
+
+    if (!process.env.RESEND_API_KEY) {
+      console.error("❌ RESEND_API_KEY missing");
+      return NextResponse.json(
+        { success: false, error: "API key ausente no servidor" },
+        { status: 500 }
+      );
+    }
+
+    const resend = new Resend(process.env.RESEND_API_KEY);
+
     const { name, email, subject, message } = await request.json();
 
     console.log("📧 Recebido:", { name, email, subject, message });
@@ -38,13 +51,13 @@ export async function POST(request: Request) {
 
     return NextResponse.json({
       success: true,
-      data
+      data,
     });
-
   } catch (error: unknown) {
     console.error("❌ Erro:", error);
 
-    const errorMessage = error instanceof Error ? error.message : "Erro desconhecido";
+    const errorMessage =
+      error instanceof Error ? error.message : "Erro desconhecido";
 
     return NextResponse.json(
       { success: false, error: errorMessage },
