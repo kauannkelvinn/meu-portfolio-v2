@@ -10,10 +10,10 @@ export default function Scanlines() {
             backgroundImage: `
               repeating-linear-gradient(
                 0deg,
-                rgba(0, 255, 65, 0.1) 0px,
+                rgba(0, 255, 65, 0.15) 0px,
                 transparent 1px,
                 transparent 2px,
-                rgba(0, 255, 65, 0.1) 3px
+                rgba(0, 255, 65, 0.15) 3px
               )
             `,
             animation: "scan 8s linear infinite",

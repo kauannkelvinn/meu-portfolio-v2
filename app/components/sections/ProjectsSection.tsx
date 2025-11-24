@@ -1,8 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
 import GlitchText from "../effects/GlitchText";
+import FadeInScroll from "../animations/FadeInScroll";
 
 interface Project {
   id: number;
@@ -76,11 +76,8 @@ export default function ProjectsSection() {
     <section id="work" className="py-32 px-6 border-t-4 border-pure-white">
       <div className="max-w-7xl mx-auto">
         
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
+        <FadeInScroll
+          direction="up"
           className="mb-16"
         >
           <h2 className="text-5xl md:text-7xl font-black font-display mb-4">
@@ -91,18 +88,16 @@ export default function ProjectsSection() {
           <p className="text-lg text-gray-400 font-mono max-w-2xl">
             Alguns projetos que desenvolvi recentemente. Cada um com seu próprio desafio e solução única.
           </p>
-        </motion.div>
+        </FadeInScroll>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {PROJECTS.map((project, index) => (
-            <motion.div
+            <FadeInScroll
               key={project.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
+              delay={index * 0.1}
+              direction="up"
               className={`
-                group relative border-4 border-pure-white p-6 
+                group relative border-4 border-pure-white bg-black p-6 
                 hover:bg-pure-white hover:text-pure-black 
                 transition-all duration-300 cursor-pointer
                 ${project.featured ? 'lg:col-span-2 lg:row-span-2' : ''}
@@ -164,24 +159,19 @@ export default function ProjectsSection() {
                 </div>
               </div>
 
-              <motion.div
+              <FadeInScroll
                 className="absolute bottom-0 right-0 w-24 h-24 bg-neon -z-10"
-                initial={{ width: "6rem", height: "6rem" }}
-                whileHover={{ width: "100%", height: "100%" }}
-                transition={{ duration: 0.5 }}
+                direction="up"
               />
 
               <div className="absolute top-0 left-0 w-8 h-8 border-t-4 border-l-4 border-neon group-hover:border-pure-black transition-colors" />
               <div className="absolute bottom-0 right-0 w-8 h-8 border-b-4 border-r-4 border-neon group-hover:border-pure-black transition-colors" />
-            </motion.div>
+            </FadeInScroll>
           ))}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
-          viewport={{ once: true }}
+        <FadeInScroll
+          direction="up"
           className="mt-16 text-center"
         >
           <p className="text-gray-400 mb-6 font-mono">
@@ -196,7 +186,7 @@ export default function ProjectsSection() {
             <Github className="w-5 h-5" />
             Ver Todos os Projetos
           </a>
-        </motion.div>
+        </FadeInScroll>
 
       </div>
     </section>

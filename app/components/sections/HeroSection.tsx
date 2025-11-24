@@ -33,11 +33,11 @@ export default function HeroSection() {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <h1 className="text-6xl md:text-8xl lg:text-9xl font-black leading-none tracking-tighter font-display">
-              <GlitchText as="span" intensity="medium">
+              <GlitchText as="span" intensity="low">
                 KAUAN
               </GlitchText>
               <br />
-              <GlitchText as="span" intensity="high">
+              <GlitchText as="span" intensity="low">
                 <span className="text-neon">KELVIN</span>
               </GlitchText>
             </h1>

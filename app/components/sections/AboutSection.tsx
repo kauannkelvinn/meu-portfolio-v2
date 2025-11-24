@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Code2, Palette, Zap, Database, Globe } from "lucide-react";
 import GlitchText from "../effects/GlitchText";
+import FadeInScroll from "../animations/FadeInScroll";
 
 interface SkillCategory {
   icon: typeof Code2;
@@ -38,11 +39,8 @@ export default function AboutSection() {
     <section id="about" className="py-32 px-6 border-t-4 border-pure-white bg-gray-dark">
       <div className="max-w-7xl mx-auto">
         
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
+        <FadeInScroll
+          direction="up"
           className="mb-16"
         >
           <h2 className="text-5xl md:text-7xl font-black font-display mb-4">
@@ -50,15 +48,12 @@ export default function AboutSection() {
               ABOUT <span className="text-neon">ME</span>
             </GlitchText>
           </h2>
-        </motion.div>
+        </FadeInScroll>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-16">
           
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
+          <FadeInScroll
+            direction="up"
             className="lg:col-span-2 border-4 border-pure-white p-8 bg-pure-black"
           >
             <div className="space-y-6">
@@ -118,13 +113,10 @@ export default function AboutSection() {
 
             <div className="absolute top-0 right-0 w-16 h-16 border-t-4 border-r-4 border-neon" />
             <div className="absolute bottom-0 left-0 w-16 h-16 border-b-4 border-l-4 border-neon" />
-          </motion.div>
+          </FadeInScroll>
 
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
+          <FadeInScroll
+            direction="up"
             className="border-4 border-pure-white p-8 bg-neon text-pure-black relative overflow-hidden"
           >
             <div className="relative z-10">
@@ -149,7 +141,7 @@ export default function AboutSection() {
               transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
               className="absolute -bottom-8 -right-8 w-32 h-32 border-4 border-pure-black opacity-20"
             />
-          </motion.div>
+          </FadeInScroll>
 
         </div>
 
