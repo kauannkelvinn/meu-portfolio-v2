@@ -1,51 +1,44 @@
 import type { Metadata } from "next";
-import { VT323, Fira_Code } from "next/font/google";
+import { Space_Grotesk, Space_Mono } from 'next/font/google';
 import "./globals.css";
-import { Header } from "./components/Header";
-import { Footer } from "./components/Footer";
-import DigitalRain from "./components/DigitalRain";
-import { Scanlines } from "./components/Scanlines";
-import { LayoutClient } from "./components/LayoutClient";
+import Header from "./components/layout/Header";
+import Footer from "./components/layout/Footer";
+import ClientEffects from "./components/effects/ClientEffects";
+import Preloader from "./components/effects/Preloader";
 
-const firaCode = Fira_Code({
-  subsets: ["latin"],
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  variable: '--font-display',
   display: "swap",
-  variable: "--font-fira-code",
 })
 
-const vt323 = VT323({
-  subsets: ["latin"],
+const spaceMono = Space_Mono({
+  weight: ['400', '700'],
+  subsets: ['latin'],
+  variable: '--font-mono',
   display: "swap",
-  weight: "400",
-  variable: "--font-vt323",
 })
 
 export const metadata: Metadata = {
-  title: "Portfólio Matrix",
-  description: "Portólio de Kauan Kelvin",
+  title: "Kauan Kelvin - Full Stack Developer",
+  description: "Portfolio de desenvolvedor full stack especializado em React, Next.js e soluções modernas.",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="pt-BR">
-      <body
-        className={`${firaCode.variable} ${vt323.variable} font-mono bg-deep-black text-ghost-white min-h-screen flex flex-col`}
-      >
-        <div className="fixed inset-0 -z-10 pointer-events-none">
-          <DigitalRain />
-          <Scanlines />
-        </div>
-        <LayoutClient>
-          <Header />
-          <main className="grow">
-            {children}
-          </main>
-          <Footer />
-        </LayoutClient>
+    <html lang="pt-BR" className={`${spaceGrotesk.variable} ${spaceMono.variable}`}>
+      <body className="font-mono bg-pure-black text-pure-white antialiased">
+        <Preloader />
+        <ClientEffects />
+        <Header />
+        <main className="min-h-screen pt-16">
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   );

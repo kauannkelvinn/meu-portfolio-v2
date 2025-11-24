@@ -1,63 +1,86 @@
 @import "tailwindcss";
 
 @theme {
-  --color-matrix: #00ff00;
-  --color-matrix-dark: #008f11;
-  --color-matrix-light: #39ff14;
+  /* === CORES === */
+  --color-neon: #00ff41;
+  --color-neon-dim: #00cc33;
+  --color-neon-dark: #00aa22;
   
-  --color-deep-black: #030a04;
-  --color-ghost-white: #cccccc;
+  --color-pure-black: #000000;
+  --color-pure-white: #ffffff;
+  --color-gray-dark: #1a1a1a;
+  --color-gray-mid: #808080;
   
-  --color-background: #030a04;
-  --color-foreground: #cccccc;
+  /* === TIPOGRAFIA === */
+  --font-display: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Space Mono', 'Courier New', 'Fira Code', monospace;
   
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-fira-code);
-  --font-matrix: var(--font-vt323);
+  /* === SPACING CUSTOM === */
+  --spacing-xs: 0.125rem;
+  --spacing-section: 8rem;
+  
+  /* === BORDER RADIUS (mantém tudo reto para brutalist) === */
+  --radius-none: 0;
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  
+  /* === BORDERS GROSSAS === */
+  --border-width-thick: 4px;
+  --border-width-ultra: 8px;
+  
+  /* === SOMBRAS (opcional, mas pode ser útil) === */
+  --shadow-brutal: 8px 8px 0 0 var(--color-neon);
+  --shadow-brutal-hover: 12px 12px 0 0 var(--color-pure-white);
 }
 
-@media (prefers-color-scheme: dark) {
-  @theme {
-    --color-background: #030a04;
-    --color-foreground: #cccccc;
-  }
+/* === UTILITÁRIOS CUSTOMIZADOS === */
+.border-brutal {
+  border-width: var(--border-width-thick);
+  border-color: var(--color-pure-white);
 }
 
-body {
-  background: var(--color-deep-black);
-  color: var(--color-ghost-white);
-  font-family: Arial, Helvetica, sans-serif;
+.shadow-brutal {
+  box-shadow: var(--shadow-brutal);
 }
 
+.shadow-brutal-hover {
+  box-shadow: var(--shadow-brutal-hover);
+}
 
+/* === ANIMAÇÕES CUSTOM === */
 @keyframes glitch {
-  0% {
-    text-shadow: 0.5px 0 0 #ff00ff, -0.5px 0 0 #00ffff;
-    clip-path: inset(20% 0 60% 0);
+  0%, 100% { 
+    clip-path: inset(0 0 0 0);
+    transform: translate(0);
   }
-  20% {
-    text-shadow: -0.5px 0 0 #ff00ff, 0.5px 0 0 #00ffff;
+  20% { 
+    clip-path: inset(20% 0 20% 0);
+    transform: translate(-2px, 2px);
+  }
+  40% { 
+    clip-path: inset(60% 0 10% 0);
+    transform: translate(2px, -2px);
+  }
+  60% { 
+    clip-path: inset(10% 0 60% 0);
+    transform: translate(-2px, 2px);
+  }
+  80% { 
     clip-path: inset(40% 0 40% 0);
-  }
-  40% {
-    text-shadow: 0.5px 0 0 #ff00ff, -0.5px 0 0 #00ffff;
-    clip-path: inset(60% 0 20% 0);
-  }
-  60% {
-    text-shadow: -0.5px 0 0 #ff00ff, 0.5px 0 0 #00ffff;
-    clip-path: inset(80% 0 5% 0);
-  }
-  80% {
-    text-shadow: 0.5px 0 0 #ff00ff, -0.5px 0 0 #00ffff;
-    clip-path: inset(50% 0 30% 0);
-  }
-  100% {
-    text-shadow: none;
-    clip-path: inset(0);
+    transform: translate(2px, -2px);
   }
 }
 
-.glitch-hover:hover {
-  animation: glitch 0.25s linear;
-  text-shadow: 0.5px 0 0 #ff00ff, -0.5px 0 0 #00ffff;
+.animate-glitch {
+  animation: glitch 0.3s ease-in-out;
+}
+
+@keyframes scan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+.animate-scan {
+  animation: scan 8s linear infinite;
 }
